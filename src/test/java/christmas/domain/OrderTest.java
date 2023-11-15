@@ -4,6 +4,7 @@ import christmas.domain.Menu;
 import christmas.domain.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 class OrderTest {

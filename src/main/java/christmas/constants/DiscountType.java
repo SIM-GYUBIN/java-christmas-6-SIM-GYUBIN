@@ -30,7 +30,6 @@ public enum DiscountType {
     }
 
 
-
     public String getName() {
         return name;
     }
@@ -38,6 +37,7 @@ public enum DiscountType {
     public int getDiscountAmount() {
         return discountAmount;
     }
+
     public int getIncrement() {
         return increment;
     }

@@ -17,6 +17,7 @@ public class Order {
     public void addItem(Menu item, int quantity) {
         items.put(item, items.getOrDefault(item, 0) + quantity);
     }
+
     public void addGift(Menu item, int quantity) {
         gifts.put(item, gifts.getOrDefault(item, 0) + quantity);
     }
@@ -37,6 +38,7 @@ public class Order {
                 .mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
     }
+
     public int calculateGiftAmount() {
         return gifts.entrySet().stream()
                 .mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
@@ -53,6 +55,7 @@ public class Order {
     public Map<Menu, Integer> getItems() {
         return new HashMap<>(items);
     }
+
     public Map<Menu, Integer> getGifts() {
         return new HashMap<>(gifts);
     }
