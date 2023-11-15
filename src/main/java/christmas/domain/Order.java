@@ -52,6 +52,10 @@ public class Order {
         return Math.max(finalAmount, 0);
     }
 
+    public boolean hasItem(Menu item) {
+        return items.containsKey(item);
+    }
+
     public Map<Menu, Integer> getItems() {
         return new HashMap<>(items);
     }

@@ -24,6 +24,9 @@ public class OrderService {
         validateItemParts(parts);
 
         Menu menu = getMenuFromName(parts[0]);
+        if (order.hasItem(menu)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
+        }
         int quantity = getQuantityFromParts(parts);
 
         order.addItem(menu, quantity);
