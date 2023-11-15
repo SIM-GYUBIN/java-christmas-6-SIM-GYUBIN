@@ -72,6 +72,6 @@ class OrderTest {
         order.addGift(Menu.CHAMPAGNE, 1); // 25000
         int discount = -5000; // Discount amount
 
-        assertThat(order.calculateFinalAmount(discount)).isEqualTo(36000); // 70000 - 5000 + 25000
+        assertThat(order.calculateFinalAmount(discount)).isEqualTo(36000);
     }
 }
