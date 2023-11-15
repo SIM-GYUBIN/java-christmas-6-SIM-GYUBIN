@@ -3,17 +3,23 @@ package christmas.domain;
 import christmas.constants.ErrorMessage;
 
 public class OrderService {
+    private static final int MAX_ORDER_QUANTITY = 20;
 
     public Order createOrderFromInput(String orderedMenu) {
         Order order = new Order();
         String[] items = orderedMenu.split(",");
+        int totalQuantity = 0;
+
         for (String item : items) {
-            processMenuItem(order, item);
+            totalQuantity += processMenuItem(order, item);
+            if (totalQuantity > MAX_ORDER_QUANTITY) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
+            }
         }
         return order;
     }
 
-    private void processMenuItem(Order order, String item) {
+    private int processMenuItem(Order order, String item) {
         String[] parts = item.split("-");
         validateItemParts(parts);
 
@@ -21,6 +27,7 @@ public class OrderService {
         int quantity = getQuantityFromParts(parts);
 
         order.addItem(menu, quantity);
+        return quantity;
     }
 
     private void validateItemParts(String[] parts) {
