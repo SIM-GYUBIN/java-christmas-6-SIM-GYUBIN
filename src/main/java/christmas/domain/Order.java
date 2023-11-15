@@ -6,8 +6,8 @@ import java.util.Map;
 import christmas.domain.Menu;
 
 public class Order {
-    private Map<Menu, Integer> items;
-    private Map<Menu, Integer> gifts;
+    private final Map<Menu, Integer> items;
+    private final Map<Menu, Integer> gifts;
 
     public Order() {
         this.items = new HashMap<>();
