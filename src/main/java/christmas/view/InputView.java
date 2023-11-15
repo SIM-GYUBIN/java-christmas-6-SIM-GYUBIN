@@ -2,16 +2,17 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class InputView {
     public LocalDate readDate() {
+        System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
         try {
-            System.out.println("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
             int date = Integer.parseInt(Console.readLine());
-
-            return LocalDate.of(2023,12, date);
-        } catch (IllegalArgumentException e) {
+            return LocalDate.of(2023, 12, date);
+        } catch (NumberFormatException | DateTimeException e) {
+            System.out.println("[ERROR] 유효하지 않은 입력입니다. 다시 입력해 주세요.");
             return readDate();
         }
     }
