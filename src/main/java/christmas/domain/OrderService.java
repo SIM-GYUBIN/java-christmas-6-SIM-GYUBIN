@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.constants.ErrorMessage;
+
 public class OrderService {
 
     public Order createOrderFromInput(String orderedMenu) {
@@ -23,7 +25,7 @@ public class OrderService {
 
     private void validateItemParts(String[] parts) {
         if (parts.length != 2) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
         }
     }
 
@@ -31,7 +33,7 @@ public class OrderService {
         try {
             return Menu.fromString(itemName.trim());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
         }
     }
 
@@ -39,11 +41,11 @@ public class OrderService {
         try {
             int quantity = Integer.parseInt(parts[1].trim());
             if (quantity <= 0) {
-                throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
             }
             return quantity;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER.getFormattedMessage());
         }
     }
 }
