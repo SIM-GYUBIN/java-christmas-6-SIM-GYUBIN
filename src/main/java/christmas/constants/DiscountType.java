@@ -1,7 +1,7 @@
 package christmas.constants;
 
 public enum DiscountType {
-    CHRISTMAS("크리스마스 디데이 할인", -1000, 100),
+    CHRISTMAS("크리스마스 디데이 할인", -1000, -100),
     WEEKDAY_DESSERT("평일 디저트 할인", -2023),
     WEEKEND_MAIN_DISH("주말 메인 요리 할인", -2023),
     SPECIAL("특별 할인", -1000),
