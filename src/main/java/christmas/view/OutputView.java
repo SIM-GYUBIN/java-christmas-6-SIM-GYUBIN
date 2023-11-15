@@ -26,28 +26,24 @@ public class OutputView {
         System.out.println(errorMessage);
     }
 
+    private void printEventPreview(LocalDate date) {
+        String dateString = date.format(DateTimeFormatter.ofPattern("M월 d일"));
+        String eventPreviewMessage = String.format(EVENT_PREVIEW_FORMAT, dateString);
+        System.out.println(eventPreviewMessage);
+    }
+
     public void printGreeting() {
         System.out.println(GREETING_MESSAGE);
     }
 
     public void printOrderDetails(LocalDate date, Order order, DiscountDetails discountDetails, int finalAmount, String badge) {
-        String dateString = date.format(DateTimeFormatter.ofPattern("MM월 dd일"));
-        String eventPreviewMessage = String.format(EVENT_PREVIEW_FORMAT, dateString);
-
-        System.out.println(eventPreviewMessage);
-        System.out.println();
+        printEventPreview(date);
         printMenu(order);
-        System.out.println();
         printCostBeforeDiscount(order);
-        System.out.println();
         printGift(order);
-        System.out.println();
         printBenefitsDetails(discountDetails);
-        System.out.println();
         printTotalDiscounts(discountDetails);
-        System.out.println();
         printFinalAmount(finalAmount);
-        System.out.println();
         printBadge(badge);
     }
 
@@ -55,7 +51,7 @@ public class OutputView {
         System.out.println(ORDER_MENU_HEADER);
 
         order.getItems().forEach((menu, quantity) -> {
-            System.out.println(menu.getName() + " " + quantity + "개");
+            System.out.println(menu.getName() + " " + quantity + UNIT_QUANTITY);
         });
     }
 
