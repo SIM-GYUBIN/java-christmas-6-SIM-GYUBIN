@@ -41,6 +41,14 @@ class OrderServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
+    @Test
+    void 주문_메뉴_중복시_예외_발생() {
+        String input = "시저샐러드-1,바비큐립-1,시저샐러드-1";
+
+        assertThatThrownBy(() -> orderService.createOrderFromInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 
     @Test
     void 수량이_0_또는_음수일_경우_예외_발생() {
