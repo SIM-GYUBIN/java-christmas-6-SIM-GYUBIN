@@ -15,7 +15,7 @@ class OrderTest {
     }
 
     @Test
-    void addItem_ShouldAddItemsCorrectly() {
+    void 주문항목_추가_정상작동() {
         order.addItem(Menu.CAESAR_SALAD, 2);
         order.addItem(Menu.BBQ_RIBS, 1);
 
@@ -26,7 +26,7 @@ class OrderTest {
     }
 
     @Test
-    void addGift_ShouldAddGiftsCorrectly() {
+    void 사은품_추가_정상작동() {
         order.addGift(Menu.CHAMPAGNE, 1);
 
         assertThat(order.getGifts()).containsOnly(
@@ -35,7 +35,7 @@ class OrderTest {
     }
 
     @Test
-    void containsCategory_ShouldReturnTrueIfItemsOfCategoryExist() {
+    void 특정_카테고리_항목_존재여부_정상_확인() {
         order.addItem(Menu.CAESAR_SALAD, 1);
 
         assertThat(order.containsCategory(Menu.Category.APPETIZER)).isTrue();
@@ -43,7 +43,7 @@ class OrderTest {
     }
 
     @Test
-    void countItemsByCategory_ShouldReturnCorrectCount() {
+    void 특정_카테고리_항목_개수_계산_확인() {
         order.addItem(Menu.CAESAR_SALAD, 2);
         order.addItem(Menu.T_BONE_STEAK, 1);
 
@@ -52,7 +52,7 @@ class OrderTest {
     }
 
     @Test
-    void calculateTotalAmount_ShouldReturnCorrectAmount() {
+    void 총_주문_금액_정확하게_계산() {
         order.addItem(Menu.CAESAR_SALAD, 2); // 8000 * 2
         order.addItem(Menu.BBQ_RIBS, 1); // 54000
 
@@ -60,14 +60,14 @@ class OrderTest {
     }
 
     @Test
-    void calculateGiftAmount_ShouldReturnCorrectAmountForGifts() {
+    void 총_증정_금액_정확하게_계산() {
         order.addGift(Menu.CHAMPAGNE, 1); // 25000
 
         assertThat(order.calculateGiftAmount()).isEqualTo(25000);
     }
 
     @Test
-    void calculateFinalAmount_ShouldReturnCorrectFinalAmount() {
+    void 최종_금액_정확하게_계산() {
         order.addItem(Menu.CAESAR_SALAD, 2); // 8000 * 2
         order.addGift(Menu.CHAMPAGNE, 1); // 25000
         int discount = -5000; // Discount amount
