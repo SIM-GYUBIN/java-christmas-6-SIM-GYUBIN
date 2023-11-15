@@ -27,6 +27,7 @@ public class EventController {
             DiscountDetails discountDetails = discountCalculator.calculateDiscount(order, date);
             int finalAmount = order.calculateFinalAmount(discountDetails.getTotalDiscount());
             String badge = Badge.awardBadge(discountDetails.getTotalDiscount());
+            outputView.printOrderDetails(date, order, discountDetails, finalAmount, badge);
         } catch (IllegalArgumentException e) {
             outputView.printError(e.getMessage());
             run(); // 재귀 호출로 에러 발생 시 다시 시작
